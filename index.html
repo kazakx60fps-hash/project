@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Менің Портфолиом</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #2563EB;
+      --primary-dark: #1D4ED8;
+      --accent: #F59E0B;
+      --bg: #F9FAFB;
+      --bg-card: #FFFFFF;
+      --text: #1F2937;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --shadow: 0 4px 16px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 32px rgba(37,99,235,0.15);
+      --radius: 12px;
+      --radius-btn: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── NAVBAR ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-size: 1.25rem; font-weight: 800;
+      color: var(--primary); text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 32px; }
+    nav a {
+      text-decoration: none; font-size: 0.9rem; font-weight: 500;
+      color: var(--text-muted); transition: color 0.2s;
+    }
+    nav a:hover { color: var(--primary); }
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .burger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--primary); margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 2.25rem; font-weight: 800;
+      color: var(--text); margin-bottom: 16px; letter-spacing: -0.5px;
+    }
+    .section-sub { font-size: 1rem; color: var(--text-muted); max-width: 520px; }
+
+    /* ── HERO ── */
+    #home {
+      background: linear-gradient(135deg, #EFF6FF 0%, #FEF3C7 100%);
+      padding: 100px 24px;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .hero-tag {
+      display: inline-block; background: var(--primary); color: #fff;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .hero-name {
+      font-size: 3.25rem; font-weight: 800; letter-spacing: -1px;
+      line-height: 1.1; margin-bottom: 8px;
+    }
+    .hero-name span { color: var(--primary); }
+    .hero-role {
+      font-size: 1.25rem; color: var(--text-muted); font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .hero-desc { font-size: 1rem; color: var(--text-muted); margin-bottom: 36px; max-width: 440px; }
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: var(--radius-btn);
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; cursor: pointer; border: 2px solid transparent;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+    .btn-outline { background: transparent; color: var(--primary); border-color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: #fff; transform: translateY(-1px); }
+    .hero-img-wrap {
+      display: flex; justify-content: center;
+    }
+    .hero-avatar {
+      width: 340px; height: 340px; border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #fff;
+      box-shadow: 0 20px 60px rgba(37,99,235,0.18);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 7rem; color: #fff;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: #fff; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: center;
+    }
+    .about-img {
+      width: 100%; aspect-ratio: 4/5; border-radius: var(--radius);
+      background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; box-shadow: var(--shadow);
+    }
+    .about-info { display: flex; flex-direction: column; gap: 20px; }
+    .about-info p { color: var(--text-muted); font-size: 1rem; }
+    .info-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+    .chip {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 8px 16px; border-radius: 100px;
+      font-size: 0.85rem; font-weight: 500; color: var(--text);
+    }
+    .chip span { font-size: 1rem; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px;
+      margin-top: 48px;
+    }
+    .skill-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 20px;
+      text-align: center;
+      transition: all 0.25s;
+      cursor: default;
+    }
+    .skill-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+    .skill-icon { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+    .skill-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+    .skill-level {
+      margin-top: 10px;
+      background: var(--border); border-radius: 100px; height: 5px; overflow: hidden;
+    }
+    .skill-bar { height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); border-radius: 100px; }
+
+    /* ── PROJECTS ── */
+    #projects { background: #fff; }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-top: 48px;
+    }
+    .project-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      transition: all 0.25s; display: flex; flex-direction: column;
+    }
+    .project-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+    .project-thumb {
+      height: 180px; display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+    }
+    .project-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .project-tag {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--primary);
+    }
+    .project-title { font-size: 1.05rem; font-weight: 700; color: var(--text); }
+    .project-desc { font-size: 0.87rem; color: var(--text-muted); flex: 1; }
+    .project-link {
+      margin-top: 16px; display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.85rem; font-weight: 600; color: var(--primary); text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 10px; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+    .contact-wrap {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start;
+      margin-top: 48px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: #fff; border: 1px solid var(--border);
+      padding: 20px; border-radius: var(--radius);
+    }
+    .contact-icon { font-size: 1.5rem; }
+    .contact-item h4 { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
+    .contact-item p { font-size: 0.95rem; font-weight: 500; color: var(--text); }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .form-group input,
+    .form-group textarea {
+      padding: 12px 16px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-btn); font-family: inherit;
+      font-size: 0.95rem; color: var(--text);
+      background: #fff; transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-submit {
+      background: var(--primary); color: #fff; border: none;
+      padding: 14px 32px; border-radius: var(--radius-btn);
+      font-size: 0.95rem; font-weight: 700; cursor: pointer;
+      font-family: inherit; transition: all 0.2s;
+      align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text); color: #fff;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-logo { font-size: 1.25rem; font-weight: 800; margin-bottom: 16px; }
+    .footer-logo span { color: var(--accent); }
+    .social-links { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; }
+    .social-link {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.1rem;
+      transition: all 0.2s;
+    }
+    .social-link:hover { background: var(--primary); border-color: var(--primary); transform: translateY(-2px); }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      section { padding: 60px 16px; }
+      .section-title { font-size: 1.75rem; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+      .hero-name { font-size: 2.25rem; }
+      .hero-desc { max-width: 100%; }
+      .btn-row { justify-content: center; }
+      .hero-avatar { width: 220px; height: 220px; font-size: 5rem; }
+      .hero-img-wrap { order: -1; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { height: 220px; aspect-ratio: auto; font-size: 4rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      nav { display: none; flex-direction: column; gap: 0; position: absolute; top: 64px; left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 8px 0; }
+      nav.open { display: flex; }
+      nav a { padding: 14px 24px; border-bottom: 1px solid var(--border); font-size: 1rem; }
+      .burger { display: flex; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-inner">
+    <a href="#home" class="logo">Бекнур<span>.</span></a>
+    <nav id="main-nav">
+      <a href="#home">Басты бет</a>
+      <a href="#about">Мен туралы</a>
+      <a href="#skills">Дағдылар</a>
+      <a href="#projects">Жобалар</a>
+      <a href="#contact">Байланыс</a>
+    </nav>
+    <div class="burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-tag">Веб-әзірлеуші</span>
+      <h1 class="hero-name">Сәлем, мен —<br><span>Касенов Бекнур</span></h1>
+      <p class="hero-role">Frontend Developer & UI Designer</p>
+      <p class="hero-desc">
+        HTML, CSS және JavaScript арқылы заманауи, адаптивті веб-сайттар жасаймын.
+        Дизайнды кодқа айналдыру — менің ең жақсы көретін ісім.
+      </p>
+      <div class="btn-row">
+        <a href="#projects" class="btn btn-primary">🚀 Жобаларымды көру</a>
+        <a href="#contact" class="btn btn-outline">📩 Байланысу</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <div class="hero-avatar">👨‍💻</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">🧑‍🎓</div>
+      <div class="about-info">
+        <div>
+          <p class="section-label">Мен туралы</p>
+          <h2 class="section-title">Кім мен?</h2>
+        </div>
+        <p>
+          Мен — веб-технологияларға құмар, толыққанды сайттар жасайтын frontend-әзірлеушімін.
+          Қазіргі таңда университетте оқып жатырмын және жеке жобаларда HTML, CSS, JavaScript
+          технологияларын белсенді қолданамын.
+        </p>
+        <p>
+          Figma-да макет жасаудан бастап, оны толыққанды веб-сайтқа айналдырғанша — барлық
+          процесті өз қолыммен жүргіземін.
+        </p>
+        <div class="info-chips">
+          <div class="chip"><span>🎓</span> Студент</div>
+          <div class="chip"><span>📍</span> Астана, Қазақстан</div>
+          <div class="chip"><span>💼</span> Фрилансер</div>
+          <div class="chip"><span>🌐</span> Ағылшын / Қазақша</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Дағдылар</p>
+    <h2 class="section-title">Технологиялар</h2>
+    <p class="section-sub">Жобаларымда қолданатын негізгі технологиялар мен құралдар.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-icon">🌐</span>
+        <div class="skill-name">HTML5</div>
+        <div class="skill-level"><div class="skill-bar" style="width:95%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">🎨</span>
+        <div class="skill-name">CSS3</div>
+        <div class="skill-level"><div class="skill-bar" style="width:90%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">⚡</span>
+        <div class="skill-name">JavaScript</div>
+        <div class="skill-level"><div class="skill-bar" style="width:75%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📐</span>
+        <div class="skill-name">Figma</div>
+        <div class="skill-level"><div class="skill-bar" style="width:85%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📦</span>
+        <div class="skill-name">Git</div>
+        <div class="skill-level"><div class="skill-bar" style="width:70%"></div></div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-icon">📱</span>
+        <div class="skill-name">Responsive</div>
+        <div class="skill-level"><div class="skill-bar" style="width:88%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Жобалар</p>
+    <h2 class="section-title">Менің жұмыстарым</h2>
+    <p class="section-sub">HTML, CSS және JavaScript арқылы жасалған жобаларым.</p>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-thumb" style="background: linear-gradient(135deg,#EFF6FF,#DBEAFE)">🛒</div>
+        <div class="project-body">
+          <span class="project-tag">HTML & CSS</span>
+          <h3 class="project-title">Интернет-дүкен беті</h3>
+          <p class="project-desc">Заманауи дизайнмен жасалған онлайн-дүкен беті. CSS Grid, Flexbox және hover-анимациялар қолданылды.</p>
+          <a href="#" class="project-link">Толығырақ →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb" style="background: linear-gradient(135deg,#FEF3C7,#FDE68A)">☀️</div>
+        <div class="project-body">
+          <span class="project-tag">JavaScript</span>
+          <h3 class="project-title">Ауа-райы қосымшасы</h3>
+          <p class="project-desc">Ауа-райы API-ін пайдаланып, кез-келген қаланың болжамын нақты уақытта көрсететін веб-қосымша.</p>
+          <a href="#" class="project-link">Толығырақ →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb" style="background: linear-gradient(135deg,#F0FDF4,#DCFCE7)">✅</div>
+        <div class="project-body">
+          <span class="project-tag">HTML & JS</span>
+          <h3 class="project-title">Тапсырмалар тізімі</h3>
+          <p class="project-desc">LocalStorage-пен жұмыс істейтін, тапсырмаларды қосуға, өшіруге және аяқталды деп белгілеуге болатын ToDo қосымшасы.</p>
+          <a href="#" class="project-link">Толығырақ →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Байланыс</p>
+    <h2 class="section-title">Хабарласыңыз</h2>
+    <p class="section-sub">Сұрақтарыңыз немесе ұсыныстарыңыз болса — маған жазыңыз!</p>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <h4>Email</h4>
+            <p>beknur@example.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <h4>Телефон</h4>
+            <p>+7 (777) 123-45-67</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <h4>Орналасқан жер</h4>
+            <p>Астана, Қазақстан</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">⏰</span>
+          <div>
+            <h4>Жұмыс уақыты</h4>
+            <p>Дүйсенбі – Жұма, 09:00–18:00</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label for="name">Атыңыз</label>
+          <input type="text" id="name" placeholder="Мысалы: Айгерім Нұрланова" required/>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="email@example.com" required/>
+        </div>
+        <div class="form-group">
+          <label for="message">Хабарлама</label>
+          <textarea id="message" placeholder="Хабарламаңызды жазыңыз..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">📨 Жіберу</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Бекнур<span>.</span></div>
+    <div class="social-links">
+      <a href="#" class="social-link" title="GitHub">🐙</a>
+      <a href="#" class="social-link" title="LinkedIn">💼</a>
+      <a href="#" class="social-link" title="Instagram">📸</a>
+      <a href="#" class="social-link" title="Telegram">✈️</a>
+    </div>
+    <p class="footer-copy">© 2025 Касенов Бекнур. Барлық құқықтар қорғалған.</p>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('main-nav');
+    nav.classList.toggle('open');
+  }
+
+  // Smooth active link highlight
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--primary)' : '';
+      a.style.fontWeight = a.getAttribute('href') === '#' + current ? '700' : '';
+    });
+  });
+
+  function submitForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✅ Жіберілді!';
+    btn.style.background = '#16A34A';
+    setTimeout(() => {
+      btn.textContent = '📨 Жіберу';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
